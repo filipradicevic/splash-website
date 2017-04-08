@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>QRL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+    <link rel="stylesheet" href="scss/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/then-request/2.2.0/request.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript">
+        (function(o) {
+            var b = "https://api.autopilothq.com/anywhere/",
+                t = "b9baa5a75eb6422487a82abd3d626ce7b57e2b621d8145b28b175b28b4bb127c",
+                a = window.AutopilotAnywhere = {
+                    _runQueue: [],
+                    run: function() {
+                        this._runQueue.push(arguments);
+                    }
+                },
+                c = encodeURIComponent,
+                s = "SCRIPT",
+                d = document,
+                l = d.getElementsByTagName(s)[0],
+                p = "t=" + c(d.title || "") + "&u=" + c(d.location.href || "") + "&r=" + c(d.referrer || ""),
+                j = "text/javascript",
+                z, y;
+            if (!window.Autopilot) window.Autopilot = a;
+            if (o.app) p = "devmode=true&" + p;
+            z = function(src, asy) {
+                var e = d.createElement(s);
+                e.src = src;
+                e.type = j;
+                e.async = asy;
+                l.parentNode.insertBefore(e, l);
+            };
+            if (!o.noaa) {
+                z(b + "aa/" + t + '?' + p, false)
+            };
+            y = function() {
+                z(b + t + '?' + p, true);
+            };
+            if (window.attachEvent) {
+                window.attachEvent("onload", y);
+            } else {
+                window.addEventListener("load", y, false);
+            }
+        })({});
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="image-wrapper">
+            <img src="ringedQ@2x.png" alt="theQRL" />
+            <p class="description">Cryptography with longevity</p>
+            <div class="hider" style="margin-bottom: 40px;">
+
+                <a href="https://github.com/surg0r/qrl" target="_blank" class="follow"><i class="fa fa-github" target="_blank"></i> Github</a><br>
+
+                <a href="http://theqrl.org/whitepaper/QRL_whitepaper.pdf" target="_blank" class="follow" id="white">White paper</a><br>
+                <a></a>
+                <a href="https://twitter.com/qrledger" target="_blank" class="follow" id="twitter"><i class="fa fa-twitter"></i>Follow</a><br>
+                <a class="follow" id="register">Register interest</a>
+            </div>
+            <form id="input">
+                <input type="text" name="email" placeholder="email@address.com">
+
+                <input class="follow" id="go" type="submit" value="Keep me updated">
+            </form>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        // function postMessageToSlack(foo) {
+        //     var xmlhttp = new XMLHttpRequest();
+        //     var webhook_url = "https://hooks.slack.com/services/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";
+        //     var myJSONStr = 'payload= {"username": "theQRL.org", "icon_emoji": ":gift:", "channel": "#incoming_interest", "text":"' + foo + '"}';
+        //     xmlhttp.open('POST', webhook_url, false);
+
+        //     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        //     xmlhttp.send(myJSONStr);
+        // }
+
+        $(document).ready(function() {
+            $('#input').hide();
+
+            $('#register').on('click', function() {
+                $('.hider').hide();
+                $('#input').show();
+
+            });
+            $('#go').on('click', function(e) {
+                e.preventDefault();
+                var foo = $('#input input').first().val();
+
+                Autopilot.run("associate", {
+                  Email: foo,
+                  custom: {
+                   "string--Custom--Form": "Home - Interest"
+                  }
+                });
+
+                $('#input').hide();
+                $('.hider').html('<h1>Interest noted - thank you!</h1><br><br><a class="follow" href="index.html">Back</a>');
+                $(".hider").show();
+            });
+        });
+    </script>
+
+</body>
+
+</html>
