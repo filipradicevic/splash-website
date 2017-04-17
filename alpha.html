@@ -14,7 +14,9 @@
     <script src="bower_components/semantic/dist/semantic.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <style type="text/css">
-
+  .ui.vertical.inverted.sidebar.menu {
+    padding-top: 3em;
+  }
     .hidden.menu {
       display: none;
     }
@@ -78,7 +80,9 @@
     .secondary.pointing.menu .toc.item {
       display: none;
     }
-
+    .fixed.menu .container .toc.item {
+      display: none;
+    }
     @media only screen and (max-width: 700px) {
       .ui.fixed.menu {
         display: none !important;
@@ -87,9 +91,17 @@
       .secondary.pointing.menu .menu {
         display: none;
       }
+      .fixed.inverted.menu .item,
+      .fixed.inverted.menu .menu {
+        display: none;
+      }
       .secondary.pointing.menu .toc.item {
         display: block;
       }
+      .fixed.menu .container .toc.item {
+        display: block;
+      }
+
       .masthead.segment {
         min-height: 350px;
       }
@@ -112,10 +124,10 @@
     .ui.secondary.inverted.pointing.menu {
       border: none;
     }
-    a.toc.item {
+  /*  a.toc.item {
       border-style: solid;
       border-width: 5px;
-    }
+    }*/
     .ui.vertical.stripe.quote.inverted.segment {
       background: #1D2951;
     }
@@ -165,12 +177,15 @@
 <body>
 
 <!-- Following Menu -->
-<div class="ui large top fixed hidden inverted menu">
+<div class="ui medium top fixed hidden inverted menu">
   <div class="ui container">
+    <a class="toc item">
+      <i class="sidebar icon"></i>
+    </a>
     <a class="active item">Home</a>
     <a class="item" href="faq.html">FAQ</a>
     <a class="item">White paper</a>
-    <a class="item">Team</a>
+    <a class="item" href="team.html">Team</a>
     <a class="item">Presale</a>
     <a class="item">Roadmap</a>
     <a class="item">Blog</a>
@@ -190,13 +205,12 @@
   <a class="active item">Home</a>
   <a class="item" href="faq.html">FAQ</a>
   <a class="item">White paper</a>
-  <a class="item">Team</a>
+  <a class="item" href="team.html">Team</a>
   <a class="item">Presale</a>
   <a class="item">Roadmap</a>
   <a class="item">Blog</a>
   <a class="item" href="https://github.com/theQRL"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
   <a class="item"><i class="fa fa-envelope" aria-hidden="true"></i> Register</a>
-  <a class="item">Signup</a>
 </div>
 
 
@@ -205,14 +219,14 @@
   <div class="ui inverted vertical masthead center aligned segment">
 
     <div class="ui container">
-      <div class="ui large secondary inverted pointing menu">
+      <div class="ui medium secondary inverted pointing menu">
         <a class="toc item">
           <i class="sidebar icon"></i>
         </a>
         <a class="active item">Home</a>
         <a class="item" href="faq.html">FAQ</a>
   <a class="item">White paper</a>
-  <a class="item">Team</a>
+  <a class="item" href="team.html">Team</a>
   <a class="item">Presale</a>
   <a class="item">Roadmap</a>
   <a class="item">Blog</a>
@@ -296,7 +310,7 @@
             <a href="#" class="item">Home</a>
             <a href="faq.html" class="item">FAQ</a>
             <a href="#" class="item">White paper</a>
-            <a href="#" class="item">Team</a>
+            <a href="team.html" class="item">Team</a>
             <a href="#" class="item">Presale</a>
             <a href="#" class="item">Roadmap</a>
             <a href="#" class="item">Blog</a>
