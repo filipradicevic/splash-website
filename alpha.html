@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="bower_components/semantic/dist/semantic.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="js/TimeCircles.js"></script>
     <script src="bower_components/semantic/dist/semantic.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <style type="text/css">
@@ -32,7 +33,7 @@
       margin-left: 0.5em;
     }
     .masthead h1.ui.header {
-      margin-top: 3em;
+      margin-top: 1em;
       margin-bottom: 0em;
       font-size: 4em;
       font-weight: bold;
@@ -151,7 +152,34 @@
   <script>
   $(document)
     .ready(function() {
-
+      $("#DateCountdown").TimeCircles({
+        "animation": "smooth",
+        "bg_width": 1,
+        "fg_width": 0.1,
+        "circle_bg_color": "#1D2951",
+          "time": {
+            "Days": {
+              "text": "Days",
+              "color": "#1D2951",
+              "show": true
+            },
+                "Hours": {
+              "text": "Hours",
+              "color": "#339D6C",
+              "show": true
+            },
+            "Minutes": {
+              "text": "Minutes",
+              "color": "#EAA221",
+              "show": true
+            },
+            "Seconds": {
+              "text": "Seconds",
+              "color": "#A50B5E",
+               "show": true
+            }
+          }
+      });
       // fix menu when passed
       $('.masthead')
         .visibility({
@@ -172,6 +200,10 @@
 
     })
   ;
+  $(window).resize(function(){
+            $("#DateCountdown").TimeCircles().rebuild();
+        });
+
   </script>
 </head>
 <body>
@@ -241,8 +273,15 @@
       <h1 class="ui inverted header">
         Quantum Resistant Ledger
       </h1>
-      <h2>Cryptocurrency with longevity</h2>
-      <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+      <h2>Countdown to Presale</h2>
+      <!-- <h2>Cryptocurrency with longevity</h2> -->
+      <!-- <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div> -->
+       <!-- <div class="ui raised very padded text container segment"> -->
+       <div id="DateCountdown" data-date="2017-05-01 00:00:00"></div>
+     <!-- </div> -->
+
+
+
     </div>
 
   </div>
