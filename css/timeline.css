@@ -148,11 +148,11 @@ header h1 {
 }
 .cd-timeline-img img {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 35px;
+  height: 35px;
   position: relative;
-  left: 50%;
-  top: 50%;
+  left: 41%;
+  top: 40%;
   margin-left: -12px;
   margin-top: -12px;
 }
@@ -164,6 +164,15 @@ header h1 {
 }
 .cd-timeline-img.cd-location {
   background: #f0ca45;
+}
+.cd-timeline-img.cd-whitepaper {
+  background: #ffffff;
+}
+.cd-timeline-img.cd-idea {
+  background: #03a5ff;
+}
+.cd-timeline-img.cd-pq {
+  background: #02d8ff;
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
@@ -248,7 +257,7 @@ header h1 {
   margin-left: 60px;
   background: white;
   border-radius: 0.25em;
-  padding: 1em;
+  padding: 0.5em; 
   box-shadow: 0 3px 0 #d7e4ed;
 }
 .cd-timeline-content:after {
@@ -311,9 +320,9 @@ header h1 {
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-content {
-    margin-left: 0;
-    padding: 1.6em;
-    width: 45%;
+    margin-left: -25%;
+  /*  padding: 1.6em; */
+    width: 70%;
   }
   .cd-timeline-content::before {
     top: 24px;
@@ -334,6 +343,7 @@ header h1 {
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content {
     float: right;
+    margin-right: -25%;
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
     top: 24px;
