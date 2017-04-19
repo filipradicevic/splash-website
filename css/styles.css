@@ -133,7 +133,7 @@
          * in time circles
          **/
         .time_circles > div {
-            position: absolute;
+            position: absolute !important;
             text-align: center;
         }
 
@@ -141,6 +141,7 @@
          *  Titles (Days, Hours, etc)
          **/
         .time_circles > div > h4 {
+            position: block !important;
             margin-top: 3em;
             padding: 0px;
             text-align: center;
@@ -152,12 +153,12 @@
          *  Time numbers, ie: 12
          **/
         .time_circles > div > span {
-            display: block;
+            display: block !important;
             width: 100%;
             text-align: center;
             font-family: 'Titillium Web', Arial;
             font-size: 300%;
-            margin-top: -1.6em;
+            margin-top: -1.4em;
             font-weight: bold;
         }
 
