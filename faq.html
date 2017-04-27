@@ -155,19 +155,41 @@
     h4.ui.horizontal.header.divider a {
       color: #1D2951;
     }
+    .ui.left.rail {
+      top: auto;
+      left: auto;
+      right: auto;
+    }
   </style>
 
   <script>
+  $.fn.isInViewport = function() {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+  function goFAQ(e){
+    event.preventDefault();
+    window.scrollTo(0, ($(e).offset().top)-50);
+  }
   $(document)
     .ready(function() {
-
-
-
+      $('.massive.circular').hide();
       // create sidebar and attach to menu open
+      $(window).on('scroll', function() {
+      if ($('#toc').isInViewport()) {
+        $('.massive.circular').hide();
+      } else { 
+        $('.massive.circular').show();
+      }
+      });
       $('.ui.sidebar')
         .sidebar('attach events', '.toc.item')
       ;
-
     })
   ;
   </script>
@@ -219,33 +241,36 @@
     <!-- </div> -->
 
     <div class="ui vertical stripe segment">
+      <div class="ui left rail">
+        <button style="position: fixed; left: 10%; bottom: 10%" class="massive circular ui icon button" onclick='window.scrollTo(0, $("body").offset().top);'><i class="chevron up icon"></i></button>
+      </div>
       <div class="ui text container">
-        <h3 class="ui header qrl-raspberry">The Quantum Resistant Ledger</h3>
-        <p><a href="">What is the QRL?</a><br>
-        <a href="">Why have your team developed the QRL?</a><br>
-        <a href="">What other features does it offer? What is on the roadmap?</a><br>
-        <a href="">What hardware requirements are needed to participate?</a><br>
-        <a href="">Who can stake to earn income?</a><br>
-        <a href="">Are there any drawbacks to making a blockchain post-quantum secure?</a><br>
-        <a href="">Will this affect scaling of such a blockchain ledger?</a><br>
-        <a href="">Where can i find details of the people in your team?</a></p>
+        <h3 class="ui header qrl-raspberry" id="toc">The Quantum Resistant Ledger</h3>
+        <p><a href="" onclick="goFAQ('#FAQ1');">What is the QRL?</a><br>
+        <a href="" onclick="goFAQ('#FAQ2');">Why have your team developed the QRL?</a><br>
+        <a href="" onclick="goFAQ('#FAQ3');">What other features does it offer? What is on the roadmap?</a><br>
+        <a href="" onclick="goFAQ('#FAQ4');">What hardware requirements are needed to participate?</a><br>
+        <a href="" onclick="goFAQ('#FAQ5');">Who can stake to earn income?</a><br>
+        <a href="" onclick="goFAQ('#FAQ6');">Are there any drawbacks to making a blockchain post-quantum secure?</a><br>
+        <a href="" onclick="goFAQ('#FAQ7');">Will this affect scaling of such a blockchain ledger?</a><br>
+        <a href="" onclick="goFAQ('#FAQ8');">Where can i find details of the people in your team?</a></p>
         <h3 class="ui header qrl-marmalade">QRL Presale</h3>
-        <p><a href="">Where can i find details of your pre-sale?</a><br>
-        <a href="">Why are you having a pre-sale?</a><br>
-        <a href="">Why should I invest in your pre-sale?</a><br>
-        <a href="">What is the format of the pre-sale?</a><br>
-        <a href="">What do I receive for my investment?</a><br>
-        <a href="">How many tokens are you issuing?</a><br>
-        <a href="">When is the mainnet launch proposed?</a><br>
-        <a href="">What features will be available upon launch?</a><br>
-        <a href="">When will QRL be listed on an exchange?</a><br>
-        <a href="">What happens to the funds from the pre-sale?</a></p>
+        <p><a href="" onclick="goFAQ('#FAQ9');">Where can i find details of your pre-sale?</a><br>
+        <a href="" onclick="goFAQ('#FAQ10');">Why are you having a pre-sale?</a><br>
+        <a href="" onclick="goFAQ('#FAQ11');">Why should I invest in your pre-sale?</a><br>
+        <a href="" onclick="goFAQ('#FAQ12');">What is the format of the pre-sale?</a><br>
+        <a href="" onclick="goFAQ('#FAQ13');">What do I receive for my investment?</a><br>
+        <a href="" onclick="goFAQ('#FAQ14');">How many tokens are you issuing?</a><br>
+        <a href="" onclick="goFAQ('#FAQ15');">When is the mainnet launch proposed?</a><br>
+        <a href="" onclick="goFAQ('#FAQ16');">What features will be available upon launch?</a><br>
+        <a href="" onclick="goFAQ('#FAQ17');">When will QRL be listed on an exchange?</a><br>
+        <a href="" onclick="goFAQ('#FAQ18');">What happens to the funds from the pre-sale?</a></p>
         
         <h4 class="ui horizontal header divider">
           
         </h4>
 
-        <h3 class="ui header qrl-raspberry">What is the QRL?</h3>
+        <h3 class="ui header qrl-raspberry" id="FAQ1">What is the QRL?</h3>
         <p>The Quantum Resistant Ledger (QRL) project is a public blockchain ledger designed to be specifically secure against quantum computing (QC) advances. Unlike existing ledgers, such as bitcoin or ethereum, the QRL is specially designed to use a form of post-quantum secure signature for transactions called XMSS.</p>
     	<p>The QRL also uses a low power proof-of-stake (POS) algorithm which again utilises iterative hash-chains and provably secure hash-based pseudo random number functions. The POS algorithm is designed to have zero reliance upon conventional signatures which are vulnerable to a sufficiently powerful QC and allows nodes to run on low power devices such as raspberry PI’s or laptops and passively earn income by staking.</p>
         <!-- <a class="ui large button">Read More</a> -->
@@ -254,7 +279,7 @@
           
         </h4>
 
-        <h3 class="ui header qrl-raspberry">Why have your team developed the QRL?</h3>
+        <h3 class="ui header qrl-raspberry" id="FAQ2">Why have your team developed the QRL?</h3>
         <p>Quantum computing has received &gt;1 billion dollars of funding in the last year from major companies such as google, IBM, etc (ignoring State actors). Y2Q will happen with experts saying there is a 17% chance of the singularity of a quantum computer emerging in the next 10 years. Technological advances tend to be non-linear and the black swan of a QC could emerge at any moment.</p>
     	<p>The problem is that when a suitably powerful QC does arrive then existing signature schemes such as RSA/DSA and (importantly for blockchains) ECDSA can be reverse engineered and the currently unbreakable security of existing ledgers will be swept away.</p>
     	<p>What started as an experiment in post-quantum signatures has developed into a fully fledged next generation public blockchain project. Our perspective is that should a QC emerge suddenly that incredible volatility would occur in the crypto asset space. Chains which offer zero or partial protection (that is a mixture of quantum-safe addresses and conventional ECDSA addresses) will suffer loss of value during this transition. Conversely chains designed to be completely post-quantum secure may find themselves rising in value substantially.</p>
@@ -265,7 +290,7 @@
         
       </h4>
 
-    <h3 class="ui header qrl-raspberry">What other features does it offer? What is on the roadmap?</h3>
+    <h3 class="ui header qrl-raspberry" id="FAQ3">What other features does it offer? What is on the roadmap?</h3>
     <p>Other than offering guaranteed longevity of cryptographic security as a public value store, the QRL also plans a decentralised post-quantum secure messaging layer (known within the development team as the ‘ephemeral’ layer). Using lattice-based cryptography (‘new hope’) QRL addresses are able to sign a transaction containing a lattice-based public key which can then be used by other nodes to ‘dial up’ and create a secure communication channel with messages passed asynchronously back and forth across the p2p network.</p>
     <p>Our roadmap includes offering inter-address secure decentralised communications and the ability of light clients to plug directly into the QRL from other application layers - either via dedicated wallet software or app integrations with a QRL light client API. This will allow secure end-end communication and data transfer between devices / applications / people using the QRL to cryptographically verify identity at both ends of the channel. </p>
     <p>Coupled with ideas for linking blockchain ID to an XMSS address we think there are many exciting potential use cases possible for the QRL with this technology.
@@ -275,45 +300,45 @@
       
     </h4>
 
-    <h3 class="ui header qrl-raspberry">What hardware requirements are needed to participate?</h3>
+    <h3 class="ui header qrl-raspberry" id="FAQ4">What hardware requirements are needed to participate?</h3>
     <p>The QRL has been specifically designed to be suitable for low power devices. Bitcoin was most attractive as an idea when it was possible to run a node on a laptop and mine. As the QRL is using a POS algorithm we are keen to offer as decentralised a network as possible ideally populated with low power devices passively staking and earning income supporting the network.</p>
 
     <h4 class="ui horizontal header divider">
       
     </h4>
 
-    <h3 class="ui header qrl-raspberry">Who can stake to earn income?</h3>
+    <h3 class="ui header qrl-raspberry" id="FAQ5">Who can stake to earn income?</h3>
     <p>Anyone may stake on the network and earn income randomly. The amount of income relates to the size of the balance within the staking XMSS address. When a node is staking the funds within that address are locked for the period of an epoch (10,000 blocks - or a few days). The only requirement is that your node is able to keep up with the network to help provide consensus and build blocks when you win staking income.</p>
 
     <h4 class="ui horizontal header divider">
       
     </h4>
 
-    <h3 class="ui header qrl-raspberry">Are there any drawbacks to making a blockchain post-quantum secure?</h3>
+    <h3 class="ui header qrl-raspberry" id="FAQ6">Are there any drawbacks to making a blockchain post-quantum secure?</h3>
     <p>Yes. XMSS signatures are much larger than conventional ECDSA signatures. Plus they are ‘stateful’ and so cannot be re-used, thus each public key associated with an XMSS address must be stored in the blockchain forever to prevent re-use. This has implications for blockchain pruning.</p>
 
     <h4 class="ui horizontal header divider">
       
     </h4>
 
-    <h3 class="ui header qrl-raspberry">Will this affect scaling of such a blockchain ledger?</h3>
+    <h3 class="ui header qrl-raspberry" id="FAQ7">Will this affect scaling of such a blockchain ledger?</h3>
     <p>While the signatures are much larger with increased bandwidth and storage requirements the time to validate/verify a transaction remains relatively short and therefore opportunities to scale such a ledger while more challenging remain possible.</p>
 
     <h4 class="ui horizontal header divider">
       
     </h4>
 
-    <h3 class="ui header qrl-raspberry">Where can i find details of the people in your team?</h3>
-    <p>Click here.</p>
+    <h3 class="ui header qrl-raspberry" id="FAQ8">Where can i find details of the people in your team?</h3>
+    <p><a href="team.html">Click here.</a></p>
 
     <h4 class="ui horizontal header divider">
       
     </h4>
 
-    <h3 class="ui header qrl-marmalade">Where can i find details of your pre-sale? </h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ9">Where can i find details of your pre-sale? </h3>
     <p>Click here.</p>
 
-    <h3 class="ui header qrl-marmalade">Why are you having a pre-sale?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ10">Why are you having a pre-sale?</h3>
     
     <p>For several reasons we feel this is the best way forward. The QRL is secured by a POS algorithm which relies upon security deposits and therefore a speculative value is required for QRL tokens to bootstrap the network from the genesis block.</p>
     
@@ -321,44 +346,45 @@
 
     <p>Finally, whilst there is already a working testnet based upon an alpha QRL node implementation there are numerous features in our roadmap we would like to implement with a full-time development team.</p>
     
-    <h3 class="ui header qrl-marmalade">Why should I invest in your pre-sale?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ11">Why should I invest in your pre-sale?</h3>
     
     <p>We think a post-quantum ledger which couples value and secure communications in a single layer offers a unique and compelling use-case and investment opportunity - a chance to get in at the ground floor in a cutting edge project. </p>
     
     <p>But do your due diligence - read the materials on this site, look through the white paper for a glimpse at the vision. We are a friendly bunch so if you have further questions please email with enquiries to info@theqrl.org or ask for an invite to our slack for a discussion or to get involved with the project. </p>
     
-    <h3 class="ui header qrl-marmalade">What is the format of the pre-sale?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ12">What is the format of the pre-sale?</h3>
     
-    <p>From 0800 GMT 1st of May for 2017 and 28 days thereafter the pre-sale will be available for entry. Prior to this a reserve list will be offered to our ‘interested investor’ list. The pre-sale is capped at 4 million dollars USD. Should this upper target be met during from reserve list then the pre-sale will not be opened up. In the case that greater than the upper limit of the target is met from the ‘interested investor’ list then the cap will still apply and a fixed proportion of each bid will be taken to match every investor with a share regardless of position in the list.</p>
+    <p>From 0000 GMT 24th of May for 2017 and 28 days thereafter the pre-sale will be available for entry. Prior to this a reserve list will be offered to our ‘interested investor’ list. The pre-sale is capped at 4 million dollars USD. Should this upper target be met during from reserve list then the pre-sale will not be opened up. In the case that greater than the upper limit of the target is met from the ‘interested investor’ list then the cap will still apply and a fixed proportion of each bid will be taken to match every investor with a share regardless of position in the list.</p>
     
     <p>However, once the pre-sale is opened to the public this will be performed with a first come, first serve system (based upon discussions with various interested parties you may wish to secure a spot on the reserve list by adding yourself to our interested investor list through the link on the front page to this website).</p>
     
-    <h3 class="ui header qrl-marmalade">What do I receive for my investment?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ13">What do I receive for my investment?</h3>
     
     <p>You are bidding for tokens released in the genesis block. Thereafter all tokens in the network will be earned passively via the POS algorithm. The more tokens held in a stake address, the greater the reward for winning a block and the more of the network you will potentially own.</p>
     
-    <h3 class="ui header qrl-marmalade">How many tokens are you issuing?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ14">How many tokens are you issuing?</h3>
     
     <p>Initial issuance in the genesis block will be 65 million coins of which 20% will be kept back for the project and vested. Therefore a total of 52 million coins will be distributed through the pre-sale. The block reward will then follow a smoothed exponential decay curve for 200 years to a maximum hard limit of 105 million coins.</p>
 
-    <h3 class="ui header qrl-marmalade">When is the mainnet launch proposed?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ15">When is the mainnet launch proposed?</h3>
 
     <p>The current plan is for mainnet launch to occur within 3 months of the pre-sale but this date is subject to a satisfactory public testnet phase and therefore could be brought forward or pushed back slightly.</p>
 
-    <h3 class="ui header qrl-marmalade">What features will be available upon launch?</h3> 
+    <h3 class="ui header qrl-marmalade" id="FAQ16">What features will be available upon launch?</h3> 
     
     <p>Click here for our roadmap with a timeline.</p>
     
-    <h3 class="ui header qrl-marmalade">When will QRL be listed on an exchange?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ17">When will QRL be listed on an exchange?</h3>
     
     <p>Whilst it would be beneficial for the QRL to be publicly tradeable via an exchange that is something to consider once mainnet is launched and stable.</p>
     
-    <h3 class="ui header qrl-marmalade">What happens to the funds from the pre-sale?</h3>
+    <h3 class="ui header qrl-marmalade" id="FAQ18">What happens to the funds from the pre-sale?</h3>
     
     <p>The money is vested in the QRL Foundation and held for use to fund the development team over the next 24 months to hopefully continue to grow the QRL project into a next generation public ledger which secures significant value across the world.</p>
 
       </div> <!-- ui text container -->
     </div> <!-- ui vertical stripe segment -->
+</div>
 
 
   <div class="ui inverted vertical footer segment">
